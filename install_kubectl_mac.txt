@@ -1,0 +1,8 @@
+# Install kubectl on mac
+kubectl version --client
+curl -O https://s3.us-west-2.amazonaws.com/amazon-eks/1.31.0/2024-09-12/bin/darwin/amd64/kubectl
+chmod +x ./kubectl
+mkdir -p $HOME/bin && cp ./kubectl $HOME/bin/kubectl && export PATH=$HOME/bin:$PATH
+echo 'export PATH=$HOME/bin:$PATH' >> ~/.bash_profile
+kubectl version --client
+aws eks update-kubeconfig --region us-east-2 --name ISC-dev-eks-cluster
