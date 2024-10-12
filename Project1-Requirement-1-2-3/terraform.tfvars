@@ -92,3 +92,6 @@ ec2_app_type = {
 ec2_app_keypair = "mahyar-ohaio"
 ec2_app_monitoring = true
 
+
+# ALB
+alb_type = "application"

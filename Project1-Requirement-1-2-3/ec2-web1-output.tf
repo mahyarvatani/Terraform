@@ -12,3 +12,8 @@ output "web1-publicdns" {
     value = "Web1 host Public DNS is: ${module.ec2_web1.public_dns}"
   
 }
+
+output "web1-id" {
+    value = "Web1 host ID is: ${module.ec2_web1.id}"
+  
+}
