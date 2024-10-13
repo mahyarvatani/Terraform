@@ -1,7 +1,11 @@
 # Local .terraform directories
 **/.terraform/*
+<<<<<<< HEAD
 .terraform.lock.hcl
 .DS_Store
+=======
+
+>>>>>>> 2238c98 (asg)
 # .tfstate files
 *.tfstate
 *.tfstate.*
@@ -37,3 +41,8 @@ override.tf.json
 .terraformrc
 terraform.rc
 mahyar-ohaio.pem
+<<<<<<< HEAD
+=======
+.terraform.lock.hcl
+.DS_Store
+>>>>>>> 2238c98 (asg)
