@@ -21,6 +21,16 @@ resource "aws_lb_target_group" "alb_target_group1" {
   }
 }
 
+# resource "aws_lb_target_group_attachment" "target_group_attch_8080" {
+#   target_group_arn = aws_lb_target_group.alb_target_group1.arn
+#   target_id        = aws_lb_target_group.alb_target_group2.id
+#   port             = 8080
+# }
+
+output "alb_target_group2_id" {
+  value = aws_lb_target_group.alb_target_group2.id
+}
+
 resource "aws_lb_target_group" "alb_target_group2" {
   name     = "${local.name}-target-group2"
   port     = "8080"
@@ -32,7 +42,7 @@ resource "aws_lb_target_group" "alb_target_group2" {
     timeout             = 5
     interval            = 10
     path                = "/"
-    port                = 80
+    port                = 8080
   }
 }
 

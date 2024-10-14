@@ -3,10 +3,10 @@ module "web1_sg" {
   version = "5.2.0"
 
 
-  name                = "${local.name}-web-sg"
+  name                = "${local.name}-web1-sg"
   description         = "Security group for Web with SSH,HTTP,HTTPS ports open within VPC"
   vpc_id              = module.vpc.vpc_id
-  ingress_rules       = ["http-80-tcp"]
+  ingress_rules       = ["all-all"]
   ingress_cidr_blocks = ["0.0.0.0/0"]
   egress_rules        = ["all-all"]
   egress_cidr_blocks  = ["0.0.0.0/0"]

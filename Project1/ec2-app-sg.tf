@@ -3,7 +3,7 @@ module "app_sg" {
   version = "5.2.0"
 
 
-  name                = "${local.name}-web-sg"
+  name                = "${local.name}-app-sg"
   description         = "Security group for App with SSH,HTTP,HTTPS ports open within VPC"
   vpc_id              = module.vpc.vpc_id
   ingress_rules       = ["ssh-tcp", "http-80-tcp", "https-443-tcp"]

@@ -26,8 +26,8 @@ vpc_public_inbound_acl_rules = [
 
     rule_number = 20
     rule_action = "allow"
-    from_port   = 443
-    to_port     = 443
+    from_port   = 8080
+    to_port     = 8080
     protocol    = "tcp"
     cidr_block  = "0.0.0.0/0"
   },
