@@ -1,11 +1,21 @@
 
-resource "aws_lb" "alb" {
-  name            = "${local.name}-alb"
+resource "aws_lb" "alb1" {
+  name            = "${local.name}-alb1"
   subnets         = module.vpc.public_subnets
   security_groups = [module.alb_sg.security_group_id]
   internal        = false
   idle_timeout    = 60
 }
+
+resource "aws_lb" "alb2" {
+  name            = "${local.name}-alb2"
+  subnets         = module.vpc.public_subnets
+  security_groups = [module.alb_sg.security_group_id]
+  internal        = false
+  idle_timeout    = 60
+}
+
+
 resource "aws_lb_target_group" "alb_target_group1" {
   name     = "${local.name}-target-group1"
   port     = "80"
@@ -21,15 +31,6 @@ resource "aws_lb_target_group" "alb_target_group1" {
   }
 }
 
-# resource "aws_lb_target_group_attachment" "target_group_attch_8080" {
-#   target_group_arn = aws_lb_target_group.alb_target_group1.arn
-#   target_id        = aws_lb_target_group.alb_target_group2.id
-#   port             = 8080
-# }
-
-output "alb_target_group2_id" {
-  value = aws_lb_target_group.alb_target_group2.id
-}
 
 resource "aws_lb_target_group" "alb_target_group2" {
   name     = "${local.name}-target-group2"
@@ -48,7 +49,7 @@ resource "aws_lb_target_group" "alb_target_group2" {
 
 
 resource "aws_lb_listener" "alb_listener_80" {
-  load_balancer_arn = aws_lb.alb.arn
+  load_balancer_arn = aws_lb.alb1.arn
   port              = 80
   protocol          = "HTTP"
   default_action {
@@ -58,8 +59,8 @@ resource "aws_lb_listener" "alb_listener_80" {
 }
 
 resource "aws_lb_listener" "alb_listener_8080" {
-  load_balancer_arn = aws_lb.alb.arn
-  port              = 8080
+  load_balancer_arn = aws_lb.alb2.arn
+  port              = 80
   protocol          = "HTTP"
   default_action {
     target_group_arn = aws_lb_target_group.alb_target_group2.arn
